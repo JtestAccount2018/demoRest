@@ -1,9 +1,13 @@
 package com.busines;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.Objects;
 
 public class Department {
+
     private Long id;
+
     private String name;
 
     public Long getId() {

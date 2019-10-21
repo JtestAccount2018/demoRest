@@ -8,6 +8,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 @Repository
 @Component
+@Transactional
 public class DepartmentDAOImpl implements DepartmentDAO {
 
     @Autowired
@@ -23,6 +25,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     @Autowired
     NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    @Transactional(readOnly = true)
     @Override
     public Map<Department, Double> getAllDepartments() {
         String sql = "select d.id, d.name, avg(salary) avg_salary FROM department d inner join employee e on d.id=e.departmentId group by d.id order by d.id;";
@@ -40,6 +43,7 @@ public class DepartmentDAOImpl implements DepartmentDAO {
        return res;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Department getDepartment(long id) {
         String sql = "SELECT * FROM department WHERE id=:id";
@@ -73,7 +77,6 @@ public class DepartmentDAOImpl implements DepartmentDAO {
     }
 
 
-    //need to test
     @Override
     public boolean addDepartment(Department d) {
         String sql = "INSERT INTO department (name) VALUES (:name)";

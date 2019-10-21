@@ -71,4 +71,14 @@ public class DepertmentDaoTest {
         department = dao.getDepartment(1);
         assertTrue(department.getName()==null);
     }
+
+    @Test
+    public void addDepartmentTest(){
+        DepartmentDAOImpl dao =  context.getBean(DepartmentDAOImpl.class);
+        assertNotNull(dao);
+        Department department =  new Department();
+        department.setName("New Department");
+        assertTrue(dao.addDepartment(department));
+        assertTrue(department.getId()>0);
+    }
 }

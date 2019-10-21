@@ -1,21 +1,34 @@
 package com.busines;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.sql.Date;
 
+
+@JsonPropertyOrder({"firstName", "lastName", "id", "salary", "departmentId", "departmentName"})
 public class Employee {
+
     private String firstName;
+
     private String lastName;
+    @JsonFormat(shape = JsonFormat.Shape.NUMBER)
     private Date birthDate;
+
     private long id;
+
     private Double salary;
-    private Long departmentId;
+
+    private long departmentId;
+
     private String departmentName;
 
     public Long getDepartmentId() {
         return departmentId;
     }
 
-    public void setDepartmentId(Long departmentId) {
+    public void setDepartmentId(long departmentId) {
         this.departmentId = departmentId;
     }
 
