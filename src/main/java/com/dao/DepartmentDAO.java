@@ -9,5 +9,6 @@ public interface DepartmentDAO {
     public Department getDepartment(long id);
     public boolean renameDepartment(String name, long id);
     public boolean deleteDepartment(long id);
+    public boolean addDepartment(Department d);
 
 }
