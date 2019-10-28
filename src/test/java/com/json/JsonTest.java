@@ -1,9 +1,8 @@
 package com.json;
 
 import com.busines.Employee;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.init.AppConfig;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.GregorianCalendar;
 
@@ -28,7 +28,7 @@ public class JsonTest {
     }
 
     @Test
-    public void JsonParserTest() throws JsonProcessingException {
+    public void JsonParserTest() throws IOException {
         Employee employee =  new Employee();
         employee.setFirstName("first name");
         employee.setLastName("last name");

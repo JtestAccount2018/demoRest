@@ -91,4 +91,28 @@ public class EmployeeDaoTest {
         e.setFirstName(null);
 
     }
+
+
+    @Test
+    public void getEmployeeByDateTest(){
+        Employee employee = dao.getEmpoyee(1);
+        List<Employee> list = dao.getByDate(employee.getBirthDate());
+        assertTrue(list.size()>0);
+        list.forEach(employee1 -> logger.info(employee1.toString()));
+    }
+
+    @Test public void getEmByDepIdTest(){
+        List<Employee> list = dao.getByDepId(2);
+        assertTrue(list.size()>0);
+        list.forEach(employee -> logger.info(employee.toString()));
+    }
+    @Test public void getByDatePeriod(){
+        Date start =  new Date(new GregorianCalendar(1980, 10, 10).getTime().getTime());
+        Date end =  new Date(new GregorianCalendar(1999, 11, 31).getTime().getTime());
+        List<Employee> list = dao.getByDatePerido(start, end);
+        assertTrue(list.size()>0);
+        list.forEach(employee -> {
+            assertTrue(employee.getBirthDate().getTime()>=start.getTime() && employee.getBirthDate().getTime()<=end.getTime());
+        });
+    }
 }

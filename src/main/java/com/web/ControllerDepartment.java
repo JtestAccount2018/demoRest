@@ -24,8 +24,8 @@ public class ControllerDepartment {
     }
 
     @PutMapping("/renameD")
-    public boolean renameD(@RequestAttribute String name, @RequestAttribute long id){
-        return dao.renameDepartment(name, id);
+    public boolean renameD(@RequestBody Department department){
+        return dao.renameDepartment(department.getName(), department.getId());
     }
 
 
@@ -34,9 +34,13 @@ public class ControllerDepartment {
         return dao.deleteDepartment(id);
     }
 
-    @PostMapping("/addDepartment")
-    public boolean addD(@RequestBody Department department){
-        return  dao.addDepartment(department);
+
+    @PostMapping(value = "/addDepartment", headers = {"Content-type=application/json"})
+    public Department addD(@RequestBody Department department){
+        if(dao.addDepartment(department)){
+            return department;
+        }
+        return new Department();
     }
 
 }
