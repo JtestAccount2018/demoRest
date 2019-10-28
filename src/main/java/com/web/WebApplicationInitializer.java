@@ -2,6 +2,7 @@ package com.web;
 
 
 import com.init.AppConfig;
+import com.init.TrConfig;
 import com.init.WebAppConfig;
 import org.h2.server.web.WebServlet;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -13,7 +14,7 @@ import javax.servlet.ServletRegistration;
 public class WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{AppConfig.class};
+        return new Class[]{AppConfig.class, TrConfig.class};
     }
 
     @Override

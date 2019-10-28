@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 
 @JsonPropertyOrder({"firstName", "lastName", "id", "salary", "departmentId", "departmentName"})
-public class Employee {
+public class Employee implements Serializable {
 
     private String firstName;
 

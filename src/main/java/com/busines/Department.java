@@ -1,19 +1,23 @@
 package com.busines;
 
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonValue;
+import jdk.vm.ci.meta.SerializableConstant;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Department {
+public class Department implements Serializable {
 
     private Long id;
 
     private String name;
 
+    @JsonSetter
     public Long getId() {
         return id;
     }
-
+    @JsonSetter
     public void setId(Long id) {
         this.id = id;
     }

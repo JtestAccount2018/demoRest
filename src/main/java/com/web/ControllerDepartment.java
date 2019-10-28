@@ -35,7 +35,7 @@ public class ControllerDepartment {
     }
 
     @PostMapping("/addDepartment")
-    public boolean addD(@RequestAttribute Department department){
+    public boolean addD(@RequestBody Department department){
         return  dao.addDepartment(department);
     }
 
